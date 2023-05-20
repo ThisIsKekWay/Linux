@@ -1,0 +1,321 @@
+# Перейти в домашнюю директорию
+cd ~
+
+# Убедиться, что мы там где надо.
+pwd
+/home/kh
+
+# Создание директорий
+mkdir students
+mkdir mentors
+
+# Проверка
+ll
+
+итого 100
+
+drwxr-x--- 17 kh   kh     4096 мар 11 08:57  ./
+
+drwxr-xr-x  3 root root   4096 мар  5 10:16  ../
+
+-rw-------  1 kh   kh      377 мар  6 20:38  .bash_history
+
+-rw-r--r--  1 kh   kh      220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh     3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh     4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh     4096 мар  5 11:11  .config/
+
+-rw-------  1 kh   kh       20 мар  5 11:14  .lesshst
+
+drwx------  3 kh   kh     4096 мар  5 10:29  .local/
+
+drwxrwxr-x  2 kh   kh     4096 мар 11 08:57  mentors/
+
+-rw-r--r--  1 kh   kh      807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf    0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh     4096 мар  5 10:47  snap/
+
+drwxrwxr-x  2 kh   kh     4096 мар 11 08:56  students/
+
+-rw-r--r--  1 kh   kh        0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Шаблоны/
+
+# Создание файлов
+cd students
+touch students
+ll
+итого 8
+
+drwxrwxr-x  2 kh kh 4096 мар 11 09:01 ./
+
+drwxr-x--- 17 kh kh 4096 мар 11 08:57 ../
+
+-rw-rw-r--  1 kh kh    0 мар 11 09:01 students_list
+
+cd ../
+cd mentors
+touch mentors
+ll
+
+итого 8
+
+drwxrwxr-x  2 kh kh 4096 мар 11 09:03 ./
+
+drwxr-x--- 17 kh kh 4096 мар 11 08:57 ../
+
+-rw-rw-r--  1 kh kh    0 мар 11 09:03 mentors_list
+
+
+# Запись в файлы
+cat >> students_list
+
+ll
+
+итого 12
+
+drwxrwxr-x  2 kh kh 4096 мар 11 09:07 ./
+
+drwxr-x--- 17 kh kh 4096 мар 11 08:57 ../
+
+-rw-rw-r--  1 kh kh  585 мар 11 09:11 students_list
+
+cat >> mentors_list 
+
+Николай Лавлинский 
+
+Кирилл Иванов
+
+ll
+
+итого 12
+
+drwxrwxr-x  2 kh kh 4096 мар 11 09:07 ./
+
+drwxr-x--- 17 kh kh 4096 мар 11 08:57 ../
+
+-rw-rw-r--  1 kh kh   64 мар 11 09:14 mentors_list
+
+
+# Перенос файла mentors_list в students
+mv mentors_list ~/students
+
+# Проверка 
+
+cd ~
+cd students/
+ll
+
+итого 16
+
+drwxrwxr-x  2 kh kh 4096 мар 11 09:18 ./
+
+drwxr-x--- 17 kh kh 4096 мар 11 08:57 ../
+
+-rw-rw-r--  1 kh kh   64 мар 11 09:14 mentors_list
+
+-rw-rw-r--  1 kh kh  585 мар 11 09:11 students_list
+
+# Удаление папки mentors
+rmdir mentors
+ll
+
+итого 96
+
+drwxr-x--- 16 kh   kh     4096 мар 11 09:22  ./
+
+drwxr-xr-x  3 root root   4096 мар  5 10:16  ../
+
+-rw-------  1 kh   kh      377 мар  6 20:38  .bash_history
+
+-rw-r--r--  1 kh   kh      220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh     3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh     4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh     4096 мар  5 11:11  .config/
+
+-rw-------  1 kh   kh       20 мар  5 11:14  .lesshst
+
+drwx------  3 kh   kh     4096 мар  5 10:29  .local/
+
+-rw-r--r--  1 kh   kh      807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf    0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh     4096 мар  5 10:47  snap/
+
+drwxrwxr-x  2 kh   kh     4096 мар 11 09:18  students_and_mentors/
+
+-rw-r--r--  1 kh   kh        0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Шаблоны/
+
+
+
+# Переименование папки students
+mv students students_and_mentors
+
+ll
+
+итого 100
+
+drwxr-x--- 17 kh   kh     4096 мар 11 09:21  ./
+
+drwxr-xr-x  3 root root   4096 мар  5 10:16  ../
+
+-rw-------  1 kh   kh      377 мар  6 20:38  .bash_history
+
+-rw-r--r--  1 kh   kh      220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh     3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh     4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh     4096 мар  5 11:11  .config/
+
+-rw-------  1 kh   kh       20 мар  5 11:14  .lesshst
+
+drwx------  3 kh   kh     4096 мар  5 10:29  .local/
+
+-rw-r--r--  1 kh   kh      807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf    0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh     4096 мар  5 10:47  snap/
+
+drwxrwxr-x  2 kh   kh     4096 мар 11 09:18  students_and_mentors/
+
+-rw-r--r--  1 kh   kh        0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Шаблоны/
+
+# Удаление папки students_and_mentors
+
+rm -R students_and_mentors/
+
+ll
+
+итого 92
+
+drwxr-x--- 15 kh   kh     4096 мар 11 09:25  ./
+
+drwxr-xr-x  3 root root   4096 мар  5 10:16  ../
+
+-rw-------  1 kh   kh      377 мар  6 20:38  .bash_history
+
+-rw-r--r--  1 kh   kh      220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh     3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh     4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh     4096 мар  5 11:11  .config/
+
+-rw-------  1 kh   kh       20 мар  5 11:14  .lesshst
+
+drwx------  3 kh   kh     4096 мар  5 10:29  .local/
+
+-rw-r--r--  1 kh   kh      807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf    0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh     4096 мар  5 10:47  snap/
+
+-rw-r--r--  1 kh   kh        0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh        5 мар 11 08:53  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Шаблоны/
