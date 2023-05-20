@@ -1,0 +1,253 @@
+root@gb-linux:/etc/apt# apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+
+Чтение списков пакетов… Готово
+
+Построение дерева зависимостей… Готово
+
+Чтение информации о состоянии… Готово         
+
+Уже установлен пакет lsb-release самой новой версии (11.1.0ubuntu4).
+
+lsb-release помечен как установленный вручную.
+
+Уже установлен пакет ubuntu-keyring самой новой версии (2021.03.26).
+
+ubuntu-keyring помечен как установленный вручную.
+
+Уже установлен пакет ca-certificates самой новой версии (20211016ubuntu0.22.04.1).
+
+ca-certificates помечен как установленный вручную.
+
+Следующие НОВЫЕ пакеты будут установлены:
+
+  curl gnupg2
+
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 11 пакетов не обновлено.
+
+Необходимо скачать 200 kB архивов.
+
+После данной операции объём занятого дискового пространства возрастёт на 506 kB.
+
+Хотите продолжить? [Д/н] y
+
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 curl amd64 7.81.0-1ubuntu1.8 [194 kB]
+
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 gnupg2 all 2.2.27-3ubuntu2.1 [5 548 B]
+
+Получено 200 kB за 10с (19,1 kB/s)     
+
+Выбор ранее не выбранного пакета curl.
+
+(Чтение базы данных … на данный момент установлено 185598 файлов и каталогов.)
+
+Подготовка к распаковке …/curl_7.81.0-1ubuntu1.8_amd64.deb …
+
+Распаковывается curl (7.81.0-1ubuntu1.8) …
+
+Выбор ранее не выбранного пакета gnupg2.
+
+Подготовка к распаковке …/gnupg2_2.2.27-3ubuntu2.1_all.deb …
+
+Распаковывается gnupg2 (2.2.27-3ubuntu2.1) …
+
+Настраивается пакет gnupg2 (2.2.27-3ubuntu2.1) …
+
+Настраивается пакет curl (7.81.0-1ubuntu1.8) …
+
+Обрабатываются триггеры для man-db (2.10.2-1) …
+
+root@gb-linux:/etc/apt# curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+
+    | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+100  1561  100  1561    0     0   1902      0 --:--:-- --:--:-- --:--:--  1961
+
+root@gb-linux:/etc/apt# gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+
+pub   rsa2048 2011-08-19 [SC] [годен до: 2024-06-14]
+
+      573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
+
+uid                      nginx signing key <signing-key@nginx.com>
+
+root@gb-linux:/etc/apt# echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+
+http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
+
+    | sudo tee /etc/apt/sources.list.d/nginx.list
+
+deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/ubuntu jammy nginx
+
+root@gb-linux:/etc/apt# echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" \
+
+    | sudo tee /etc/apt/preferences.d/99nginx
+
+Package: *
+
+Pin: origin nginx.org
+
+Pin: release o=nginx
+
+Pin-Priority: 900
+
+root@gb-linux:/etc/apt# apt update
+
+root@gb-linux:/etc/apt# apt install nginx
+
+Чтение списков пакетов… Готово
+
+Построение дерева зависимостей… Готово
+
+Чтение информации о состоянии… Готово         
+
+Следующие НОВЫЕ пакеты будут установлены:
+
+  nginx
+
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 11 пакетов не обновлено.
+
+Необходимо скачать 1 004 kB архивов.
+
+После данной операции объём занятого дискового пространства возрастёт на 3 259 kB.
+
+Пол:1 http://nginx.org/packages/ubuntu jammy/nginx amd64 nginx amd64 1.22.1-1~jammy [1 004 kB]
+
+Получено 1 004 kB за 11с (94,5 kB/s)      
+
+Выбор ранее не выбранного пакета nginx.
+
+(Чтение базы данных … на данный момент установлено 185611 файлов и каталогов.)
+
+Подготовка к распаковке …/nginx_1.22.1-1~jammy_amd64.deb …
+
+----------------------------------------------------------------------
+
+
+
+Thanks for using nginx!
+
+
+
+Please find the official documentation for nginx here:
+
+* https://nginx.org/en/docs/
+
+
+
+Please subscribe to nginx-announce mailing list to get
+
+the most important news about nginx:
+
+* https://nginx.org/en/support.html
+
+
+
+Commercial subscriptions for nginx are available on:
+
+* https://nginx.com/products/
+
+
+
+----------------------------------------------------------------------
+
+Распаковывается nginx (1.22.1-1~jammy) …
+
+Настраивается пакет nginx (1.22.1-1~jammy) …
+
+Устанавливается новая версия файла настройки /etc/default/nginx …
+
+Устанавливается новая версия файла настройки /etc/init.d/nginx …
+
+Устанавливается новая версия файла настройки /etc/logrotate.d/nginx …
+
+Устанавливается новая версия файла настройки /etc/nginx/fastcgi_params …
+
+Устанавливается новая версия файла настройки /etc/nginx/mime.types …
+
+Устанавливается новая версия файла настройки /etc/nginx/nginx.conf …
+
+Обрабатываются триггеры для man-db (2.10.2-1) …
+
+root@gb-linux:/etc/apt# dpkg -r nginx
+
+(Чтение базы данных … на данный момент установлено 185635 файлов и каталогов.)
+
+Удаляется nginx (1.22.1-1~jammy) …
+
+Обрабатываются триггеры для man-db (2.10.2-1) …
+
+root@gb-linux:/etc/apt# snap install robomongo
+
+robomongo 0.9.0-rc9 от Francesco Banconi (frankban) установлен
+
+h@gb-linux:~$ nano text.txt
+
+kh@gb-linux:~$ ll
+
+итого 104
+
+drwxr-x--- 16 kh   kh         4096 мар 18 13:40  ./
+
+drwxr-xr-x  5 root root       4096 мар 14 18:47  ../
+
+-rw-------  1 kh   kh         5936 мар 14 19:02  .bash_history
+
+-rw-r--r--  1 kh   kh          220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh         3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh         4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh         4096 мар  5 11:11  .config/
+
+drwxrwsr-x  3 kh   developers 4096 мар 14 18:58  developers/
+
+-rw-------  1 kh   kh           20 мар 14 18:51  .lesshst
+
+drwx------  3 kh   kh         4096 мар  5 10:29  .local/
+
+-rw-r--r--  1 kh   kh          807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf        0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh         4096 мар  5 10:47  snap/
+
+-rw-r--r--  1 kh   kh            0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-rw-r--  1 kh   kh           20 мар 18 13:40  text.txt
+
+-rw-r-----  1 kh   kh            5 мар 18 12:32  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh            5 мар 18 12:33  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh            5 мар 18 12:33  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh            5 мар 18 12:33  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Шаблоны/
+
+kh@gb-linux:~$ crontab -e
+
+*/10  * * * * cp –b /home/kh/test.txt /home/kh/backups/test.txt.bak
+
+no crontab for kh - using an empty one
+
+crontab: installing new crontab

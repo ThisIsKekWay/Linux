@@ -1,0 +1,437 @@
+sudo useradd -s /bin/bash -m -d /home/test1 test1
+
+[sudo] пароль для kh: 
+
+kh@gb-linux:~$ sudo useradd -s /bin/bash -m -d /home/test2 test2
+
+kh@gb-linux:~$ tail /etc/passwd
+
+geoclue:x:124:131::/var/lib/geoclue:/usr/sbin/nologin
+
+pulse:x:125:132:PulseAudio daemon,,,:/run/pulse:/usr/sbin/nologin
+
+gnome-initial-setup:x:126:65534::/run/gnome-initial-setup/:/bin/false
+
+hplip:x:127:7:HPLIP system user,,,:/run/hplip:/bin/false
+
+gdm:x:128:134:Gnome Display Manager:/var/lib/gdm3:/bin/false
+
+kh:x:1000:1000:Koha,,,:/home/kh:/bin/bash
+
+sshd:x:129:65534::/run/sshd:/usr/sbin/nologin
+
+vboxadd:x:999:1::/var/run/vboxadd:/bin/false
+
+test1:x:1001:1001::/home/test1:/bin/bash
+
+test2:x:1002:1002::/home/test2:/bin/bash
+
+sudo groupadd testgroup
+
+[sudo] пароль для kh: 
+
+tail /etc/group
+
+pulse-access:x:133:
+
+gdm:x:134:
+
+lxd:x:135:kh
+
+kh:x:1000:
+
+sambashare:x:136:kh
+
+vboxsf:x:999:kh
+
+vboxdrmipc:x:998:
+
+test1:x:1001:
+
+test2:x:1002:
+
+testgroup:x:1003:
+
+sudo usermod -aG testgroup test1
+
+tail /etc/group
+
+pulse-access:x:133:
+
+gdm:x:134:
+
+lxd:x:135:kh
+
+kh:x:1000:
+
+sambashare:x:136:kh
+
+vboxsf:x:999:kh
+
+vboxdrmipc:x:998:
+
+test1:x:1001:
+
+test2:x:1002:
+
+testgroup:x:1003:test1
+
+sudo usermod -g testgroup test2
+
+tail /etc/group
+
+pulse-access:x:133:
+
+gdm:x:134:
+
+lxd:x:135:kh
+
+kh:x:1000:
+
+sambashare:x:136:kh
+
+vboxsf:x:999:kh
+
+vboxdrmipc:x:998:
+
+test1:x:1001:
+
+test2:x:1002:
+
+testgroup:x:1003:test1
+
+kh@gb-linux:~$ sudo id test2
+
+uid=1002(test2) gid=1003(testgroup) группы=1003(testgroup)
+
+sudo gpasswd -d test1 testgroup
+
+Удаление пользователя test1 из группы testgroup
+
+sudo id test1
+
+uid=1001(test1) gid=1001(test1) группы=1001(test1)
+
+sudo usermod -g sudo test2
+
+kh@gb-linux:~$ sudo id test2
+
+uid=1002(test2) gid=27(sudo) группы=27(sudo)
+
+
+kh@gb-linux:~$ sudo groupadd developers
+kh@gb-linux:~$ sudo useradd -m -G developers -s /bin/bash test1
+
+kh@gb-linux:~$ sudo useradd -m -G developers -s /bin/bash test2
+
+kh@gb-linux:~$ mkdir developers
+
+kh@gb-linux:~$ ll
+
+итого 100
+
+drwxr-x--- 16 kh   kh     4096 мар 14 18:47  ./
+
+drwxr-xr-x  5 root root   4096 мар 14 18:47  ../
+
+-rw-------  1 kh   kh     5236 мар 14 18:43  .bash_history
+
+-rw-r--r--  1 kh   kh      220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh     3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh     4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh     4096 мар  5 11:11  .config/
+
+drwxrwxr-x  2 kh   kh     4096 мар 14 18:47  developers/
+
+-rw-------  1 kh   kh       20 мар 13 21:56  .lesshst
+
+drwx------  3 kh   kh     4096 мар  5 10:29  .local/
+
+-rw-r--r--  1 kh   kh      807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf    0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh     4096 мар  5 10:47  snap/
+
+-rw-r--r--  1 kh   kh        0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-r-----  1 kh   kh        5 мар 14 18:11  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh        5 мар 14 18:11  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh        5 мар 14 18:11  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh        5 мар 14 18:11  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh     4096 мар  5 10:29  Шаблоны/
+
+kh@gb-linux:~$ sudo chgrp developer /home/kh/developers
+
+chgrp: неверная группа: «developer»
+
+kh@gb-linux:~$ sudo chgrp developers /home/kh/developers
+
+kh@gb-linux:~$ ll
+
+итого 100
+
+drwxr-x--- 16 kh   kh         4096 мар 14 18:47  ./
+
+drwxr-xr-x  5 root root       4096 мар 14 18:47  ../
+
+-rw-------  1 kh   kh         5236 мар 14 18:43  .bash_history
+
+-rw-r--r--  1 kh   kh          220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh         3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh         4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh         4096 мар  5 11:11  .config/
+
+drwxrwxr-x  2 kh   developers 4096 мар 14 18:47  developers/
+
+-rw-------  1 kh   kh           20 мар 13 21:56  .lesshst
+
+drwx------  3 kh   kh         4096 мар  5 10:29  .local/
+
+-rw-r--r--  1 kh   kh          807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf        0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh         4096 мар  5 10:47  snap/
+
+-rw-r--r--  1 kh   kh            0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Шаблоны/
+
+kh@gb-linux:~$ chmod 775 developers/
+
+kh@gb-linux:~$ ll
+
+итого 100
+
+drwxr-x--- 16 kh   kh         4096 мар 14 18:47  ./
+
+drwxr-xr-x  5 root root       4096 мар 14 18:47  ../
+
+-rw-------  1 kh   kh         5236 мар 14 18:43  .bash_history
+
+-rw-r--r--  1 kh   kh          220 мар  5 10:16  .bash_logout
+
+-rw-r--r--  1 kh   kh         3771 мар  5 10:16  .bashrc
+
+drwx------ 13 kh   kh         4096 мар  5 11:18  .cache/
+
+drwx------ 13 kh   kh         4096 мар  5 11:11  .config/
+
+drwxrwxr-x  2 kh   developers 4096 мар 14 18:47  developers/
+
+-rw-------  1 kh   kh           20 мар 13 21:56  .lesshst
+
+drwx------  3 kh   kh         4096 мар  5 10:29  .local/
+
+-rw-r--r--  1 kh   kh          807 мар  5 10:16  .profile
+
+drwxrwx---  1 root vboxsf        0 мар  5 11:37  shared/
+
+drwx------  4 kh   kh         4096 мар  5 10:47  snap/
+
+-rw-r--r--  1 kh   kh            0 мар  5 10:55  .sudo_as_admin_successful
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-clipboard.pid
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-draganddrop.pid
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-seamless.pid
+
+-rw-r-----  1 kh   kh            5 мар 14 18:11  .vboxclient-vmsvga-session-tty2.pid
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Видео/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Документы/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Загрузки/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Изображения/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Музыка/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Общедоступные/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29 'Рабочий стол'/
+
+drwxr-xr-x  2 kh   kh         4096 мар  5 10:29  Шаблоны/
+
+
+kh@gb-linux:~$ sudo chmod g+s developers/
+
+kh@gb-linux:~$ cd developers/
+
+kh@gb-linux:~/developers$ cat >> testlog
+
+testlog from @kh
+
+kh@gb-linux:~/developers$ ll
+
+итого 12
+
+drwxrwsr-x  2 kh developers 4096 мар 14 18:54 ./
+
+drwxr-x--- 16 kh kh         4096 мар 14 18:51 ../
+
+-rw-rw-r--  1 kh developers   17 мар 14 18:55 testlog
+
+kh@gb-linux:~/developers$ sudo su test1
+
+test1@gb-linux:/home/kh/developers$ ll
+
+итого 12
+
+drwxrwsr-x  2 kh developers 4096 мар 14 18:54 ./
+
+drwxr-x--- 16 kh kh         4096 мар 14 18:51 ../
+
+-rw-rw-r--  1 kh developers   17 мар 14 18:55 testlog
+
+test1@gb-linux:/home/kh/developers$ cat >> testlog 
+
+test1@gb-linux:/home/kh/developers$ nano testlog
+
+test1@gb-linux:/home/kh/developers$ ll
+
+итого 12
+
+drwxrwsr-x  2 kh developers 4096 мар 14 18:56 ./
+
+drwxr-x--- 16 kh kh         4096 мар 14 18:51 ../
+
+-rw-rw-r--  1 kh developers   66 мар 14 18:56 testlog
+
+test1@gb-linux:/home/kh/developers$ su kh
+
+Пароль: 
+
+kh@gb-linux:~/developers$ sudo su test2
+
+[sudo] пароль для kh: 
+
+test2@gb-linux:/home/kh/developers$ ll
+
+итого 12
+
+drwxrwsr-x  2 kh developers 4096 мар 14 18:56 ./
+
+drwxr-x--- 16 kh kh         4096 мар 14 18:51 ../
+
+-rw-rw-r--  1 kh developers   66 мар 14 18:56 testlog
+
+test2@gb-linux:/home/kh/developers$ nano testlog 
+
+test2@gb-linux:/home/kh/developers$ ll
+
+итого 12
+
+drwxrwsr-x  2 kh developers 4096 мар 14 18:57 ./
+
+drwxr-x--- 16 kh kh         4096 мар 14 18:51 ../
+
+-rw-rw-r--  1 kh developers  113 мар 14 18:57 testlog
+
+test2@gb-linux:/home/kh/developers$ cat testlog 
+
+testlog from @kh
+
+tetslog approved from test1 in developers group
+
+testlog approved from test2 in developers group
+
+
+
+test2@gb-linux:/home/kh/developers$ su kh
+
+Пароль: 
+
+kh@gb-linux:~/developers$ mkdir /home/kh/developers/testsubdir
+
+kh@gb-linux:~/developers$ chmod 1777 /home/kh/developers/testsubdir
+
+kh@gb-linux:~/developers$ ll
+
+итого 16
+
+drwxrwsr-x  3 kh developers 4096 мар 14 18:58 ./
+
+drwxr-x--- 16 kh kh         4096 мар 14 18:51 ../
+
+-rw-rw-r--  1 kh developers  113 мар 14 18:57 testlog
+
+drwxrwxrwt  2 kh developers 4096 мар 14 18:58 testsubdir/
+
+kh@gb-linux:~/developers$ cd testsubdir/
+
+kh@gb-linux:~/developers/testsubdir$ cat >> testlog1
+
+some text
+
+kh@gb-linux:~/developers/testsubdir$ sudo su test1
+
+[sudo] пароль для kh: 
+
+test1@gb-linux:/home/kh/developers/testsubdir$ ll
+
+итого 12
+
+drwxrwxrwt 2 kh developers 4096 мар 14 18:59 ./
+
+drwxrwsr-x 3 kh developers 4096 мар 14 18:58 ../
+
+-rw-rw-r-- 1 kh kh           10 мар 14 18:59 testlog1
+
+test1@gb-linux:/home/kh/developers/testsubdir$ rm testlog1
+
+rm: удалить защищённый от записи обычный файл 'testlog1'? y
+
+rm: невозможно удалить 'testlog1': Операция не позволена
+
+
+
